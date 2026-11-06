@@ -1,0 +1,9 @@
+out/
+build/
+target/
+*.class
+*.log
+.DS_Store
+.idea/
+.vscode/settings.json
+*.iml
