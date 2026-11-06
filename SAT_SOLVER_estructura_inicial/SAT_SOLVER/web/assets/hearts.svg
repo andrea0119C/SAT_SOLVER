@@ -1,0 +1,29 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="300" height="220"
+     viewBox="0 0 300 220">
+  <defs>
+    <g id="corazon" fill="#F3A8C6"
+       shape-rendering="crispEdges">
+      <rect x="4" y="0" width="8" height="8"/>
+      <rect x="20" y="0" width="8" height="8"/>
+      <rect x="0" y="8" width="8" height="8"/>
+      <rect x="12" y="8" width="8" height="8"/>
+      <rect x="24" y="8" width="8" height="8"/>
+      <rect x="0" y="16" width="8" height="8"/>
+      <rect x="24" y="16" width="8" height="8"/>
+      <rect x="4" y="24" width="8" height="8"/>
+      <rect x="20" y="24" width="8" height="8"/>
+      <rect x="8" y="32" width="8" height="8"/>
+      <rect x="16" y="32" width="8" height="8"/>
+      <rect x="12" y="40" width="8" height="8"/>
+    </g>
+  </defs>
+
+  <use href="#corazon"
+       transform="translate(25 20) rotate(-15 16 24)"/>
+  <use href="#corazon"
+       transform="translate(220 45) rotate(15 16 24)"/>
+  <use href="#corazon"
+       transform="translate(130 145) rotate(-12 16 24)"/>
+</svg>
