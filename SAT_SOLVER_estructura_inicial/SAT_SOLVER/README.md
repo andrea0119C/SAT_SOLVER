@@ -45,7 +45,7 @@ Este es un **punto de partida funcional**. No se debe presentar como estudio exp
 
 ## Acuerdos del equipo
 
-Cada integrante crea su rama `feature/p1-frontend`, etc. Trabajar mediante Pull Requests, sin editar módulos asignados a otros sin coordinación. Antes de integrar, probar la API y los casos SAT/UNSAT.
+Cada integrante trabajo en su parte notificando al equipo, hacer pull en caso de cambios. Trabajar mediante Pull sin editar módulos asignados a otros sin coordinación. Antes de integrar, probar la API y los casos SAT/UNSAT.
 
 ## Docencia
 
