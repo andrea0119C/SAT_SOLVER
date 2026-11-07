@@ -2,7 +2,7 @@ package ec.edu.satsolver.parser;
 import ec.edu.satsolver.model.FormulaCNF;
 import java.util.*;
 import java.util.regex.*;
-/** Analizador estricto para CNF con gramática: (lit | lit) & (lit). */
+/** Analizador CNF: formula := clausula ('&' clausula)*; clausula := '(' literal ('|' literal)* ')'. */
 public final class CNFParser {
     private static final Pattern NAME = Pattern.compile("[A-Za-z][A-Za-z0-9_]*");
     private final String input;
