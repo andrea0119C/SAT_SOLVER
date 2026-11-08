@@ -20,6 +20,11 @@ public final class JsonUtil {
         Matcher m=Pattern.compile("\"assignment\"\\s*:\\s*\\{([^{}]*)\\}").matcher(body);
         if(!m.find()) throw new IllegalArgumentException("Falta 'assignment' como objeto JSON");
         String raw=m.group(1).trim(); Map<String,Boolean> out=new LinkedHashMap<>();
+        if (raw.endsWith(",")) {
+            throw new IllegalArgumentException(
+                "Asignación JSON inválida: coma final"
+            );
+        }
         if(raw.isEmpty()) return out;
         Pattern pair=Pattern.compile("\\s*\"([A-Za-z][A-Za-z0-9_]*)\"\\s*:\\s*(true|false)\\s*(?:,|$)");
         int at=0;
