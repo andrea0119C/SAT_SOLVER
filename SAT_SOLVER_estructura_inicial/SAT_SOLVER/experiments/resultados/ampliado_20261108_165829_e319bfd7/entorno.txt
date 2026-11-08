@@ -1,0 +1,26 @@
+PROYECTO SAT SOLVER - EXPERIMENTACION AMPLIADA - PERSONA 5
+Fecha de ejecucion: 2026-11-08T16:58:30.422792500
+Java runtime: 26.0.1+8-34
+Sistema operativo: Windows 11 10.0
+Procesadores logicos: 16
+Semilla base: 20261108
+Tamanos n: [6, 9, 12, 15, 18]
+Escenarios: [SAT_BAJA_DENSIDAD, SAT_ALTA_DENSIDAD, UNSAT_INMEDIATO, UNSAT_NUCLEO_COMPLETO]
+Instancias independientes por escenario y tamano: 5
+Calentamiento por instancia: 10
+Repeticiones medidas por instancia: 20
+Metodo memoria: BYTES_ASIGNADOS_HILO
+Memoria: bytes asignados por hilo; NO pico de RAM ni espacio vivo del algoritmo.
+Sin soporte de ThreadMXBean: memoria vacia (no inventar valores).
+SAT_BAJA_DENSIDAD: 2*n clausulas 3-CNF con testigo plantado.
+SAT_ALTA_DENSIDAD: 5*n clausulas 3-CNF con testigo plantado.
+UNSAT_INMEDIATO: SAT base + x1 + !x1; detectabilidad inmediata.
+UNSAT_NUCLEO_COMPLETO: SAT base + 2^k clausulas que prohiben todas las asignaciones de k variables.
+k = max(3, min(6, n/3)); UNSAT por construccion, sin clausulas unitarias en el nucleo.
+ATENCION: densidad no equivale necesariamente a dificultad del problema.
+ATENCION: el nucleo completo involucra a lo sumo seis variables; NO es el peor caso general.
+Cada formula SAT se valida con testigo conocido y con el verificador del equipo.
+Solo se mide solver.solve() / verifier.verify(), sin generacion, parser, HTTP, CSV o dibujos.
+Mediana por instancia de repeticiones, luego mediana de medianas sobre cinco instancias.
+Cuartiles Q1/Q3: distribucion entre las cinco medianas por instancia.
+Rendimiento sujeto a calentamiento JIT, GC, CPU y ejecucion de fondo.

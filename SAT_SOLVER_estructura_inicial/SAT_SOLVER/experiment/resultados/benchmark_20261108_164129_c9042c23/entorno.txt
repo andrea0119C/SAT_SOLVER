@@ -1,0 +1,17 @@
+Proyecto: SAT SOLVER / Persona 5
+JVM: 26.0.1+8-34
+Sistema operativo: Windows 11 10.0
+Procesadores logicos: 16
+Tamanos de variables: [6, 9, 12, 15, 18]
+Clausulas por instancia: 4 * n
+Semilla base: 20261108
+Calentamiento por configuracion: 12
+Repeticiones por configuracion: 30
+Metodo de memoria: BYTES_ASIGNADOS_HILO
+Nota: BYTES_ASIGNADOS_HILO cuenta bytes asignados por el hilo durante cada operacion.
+Nota: HEAP_DELTA_ESTIMADO es solo una diferencia aproximada y puede fluctuar con el GC.
+Nota: ninguna de estas medidas representa el pico de RAM del proceso.
+Las mediciones no incluyen generacion de casos, parser, servidor, red, graficas ni CSV.
+UNSAT incluye un nucleo contradictorio pequeno; no representa el peor caso exponencial.
+Se usa una instancia fija por tipo y tamano; repetir sobre instancias diversas
+es una mejora posible para generalizar los resultados.

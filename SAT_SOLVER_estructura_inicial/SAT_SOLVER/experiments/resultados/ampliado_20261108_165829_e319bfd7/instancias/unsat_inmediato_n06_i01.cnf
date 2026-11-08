@@ -1,0 +1,16 @@
+c SAT_SOLVER experimental case - variable xI maps to integer I
+p cnf 6 14
+1 -4 -5 0
+-2 3 -6 0
+3 6 4 0
+4 -2 5 0
+5 -2 6 0
+-6 -1 -5 0
+1 2 5 0
+3 -6 4 0
+-6 -2 -3 0
+-3 -6 -5 0
+-4 5 -2 0
+3 4 -2 0
+1 0
+-1 0
