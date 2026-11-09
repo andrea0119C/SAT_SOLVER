@@ -49,7 +49,25 @@ public final class SatHttpServer {
         Path root=Paths.get("web").toAbsolutePath().normalize();
         Path file=root.resolve(raw.substring(1)).normalize();
         if(!file.startsWith(root)||!Files.isRegularFile(file)){respond(ex,404,"No encontrado","text/plain");return;}
-        String type=raw.endsWith(".css")?"text/css":raw.endsWith(".js")?"text/javascript":raw.endsWith(".html")?"text/html":"application/octet-stream";
+        
+        String type;
+
+        if (raw.endsWith(".html")) {
+            type = "text/html";
+
+        } else if (raw.endsWith(".css")) {
+            type = "text/css";
+
+        } else if (raw.endsWith(".js")) {
+            type = "text/javascript";
+
+        } else if (raw.endsWith(".svg")) {
+            type = "image/svg+xml";
+
+        } else {
+            type = "application/octet-stream";
+        }
+
         byte[] bytes=Files.readAllBytes(file);ex.getResponseHeaders().set("Content-Type",type+"; charset=utf-8");ex.sendResponseHeaders(200,bytes.length);try(OutputStream os=ex.getResponseBody()){os.write(bytes);}
     }
     private static void respond(HttpExchange ex,int code,String body,String type)throws IOException{
