@@ -314,51 +314,189 @@
             </section>
 
             <!-- ACTIVIDAD 4: RENDIMIENTO -->
-            <section id="rendimiento" class="tool-screen" hidden>
+<section id="rendimiento" class="tool-screen" hidden>
 
-                <h2>Análisis de rendimiento</h2>
+    <h2>Análisis de rendimiento</h2>
 
-                <p class="section-text">
-                    En esta sección se presentarán
-                    los resultados experimentales
-                    del algoritmo y del verificador.
-                </p>
+    <p class="section-text">
+        Resultados experimentales del algoritmo DPLL
+        y del verificador SAT, obtenidos mediante
+        pruebas automatizadas en Java.
+    </p>
 
-                <div class="pixel-divider"></div>
+    <div class="pixel-divider"></div>
 
-                <div class="info-grid">
+    <div class="info-grid">
+        <article class="info-card">
+            <h3>✦ Encontrar</h3>
+            <p>
+                DPLL explora asignaciones para
+                determinar si una fórmula CNF
+                es satisfacible.
+            </p>
+        </article>
 
-                    <article class="info-card">
-                        <h3>✦ Encontrar</h3>
-                        <p>
-                            El algoritmo busca una
-                            asignación que satisfaga
-                            la fórmula.
-                        </p>
-                    </article>
+        <article class="info-card">
+            <h3>✦ Verificar</h3>
+            <p>
+                Comprueba si una asignación dada
+                satisface todas las cláusulas.
+            </p>
+        </article>
+    </div>
 
-                    <article class="info-card">
-                        <h3>✦ Verificar</h3>
-                        <p>
-                            Se comprueba una asignación
-                            ya propuesta por el usuario.
-                        </p>
-                    </article>
+    <div class="result-box">
+        <h3>✧ Metodología experimental</h3>
+        <p class="section-text">
+            Se evaluaron 100 fórmulas CNF,
+            distribuidas en 5 tamaños de entrada
+            y 4 escenarios diferentes.
+        </p>
+        <p class="section-text">
+            Cada instancia se ejecutó 20 veces,
+            después de 10 ejecuciones de calentamiento.
+            Los resultados representan medianas.
+        </p>
+        <p class="section-text">
+            Escenarios: SAT de baja densidad,
+            SAT de alta densidad, UNSAT inmediato
+            y UNSAT con núcleo completo.
+        </p>
+    </div>
 
-                </div>
+    <div class="result-box">
+        <h3>✧ Rendimiento de DPLL</h3>
 
-                <div class="result-box">
-                    <h3>✧ Experimentos</h3>
-                    <p class="section-text">
-                        Próximamente se integrarán
-                        las tablas de tiempo,
-                        consumo de memoria y gráficas
-                        de las pruebas realizadas
-                        por el equipo.(thony hace estoooooooo)
-                    </p>
-                </div>
+        <img
+            src="assets/rendimiento/grafico_dpll_escenarios.png"
+            alt="Gráfica de tiempos DPLL en cuatro escenarios"
+            style="width:100%; height:auto; display:block;
+                   background:white; border-radius:8px;"
+        >
 
-            </section>
+        <p class="section-text">
+            Se observa que la dificultad de una
+            fórmula depende de su estructura,
+            no solamente del número de variables.
+        </p>
+    </div>
+
+    <div class="result-box">
+        <h3>✧ Encontrar frente a verificar</h3>
+
+        <img
+            src="assets/rendimiento/grafico_resolver_verificar.png"
+            alt="Comparación de tiempos DPLL y verificador SAT"
+            style="width:100%; height:auto; display:block;
+                   background:white; border-radius:8px;"
+        >
+
+        <p class="section-text">
+            En las instancias evaluadas, verificar
+            una asignación SAT fue generalmente
+            más rápido que encontrarla con DPLL.
+        </p>
+    </div>
+
+    <div class="result-box">
+        <h3>✧ Resultados experimentales</h3>
+
+        <p class="section-text">
+            Tiempo mediano de DPLL (milisegundos).
+        </p>
+
+        <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse;
+                          font-size:9px; line-height:2.2;
+                          text-align:center;">
+                <thead>
+                    <tr>
+                        <th>n</th>
+                        <th>SAT 2n</th>
+                        <th>SAT 5n</th>
+                        <th>UNSAT rápido</th>
+                        <th>UNSAT núcleo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>6</td>
+                        <td>0.01000</td>
+                        <td>0.02165</td>
+                        <td>0.00240</td>
+                        <td>0.00945</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>0.00630</td>
+                        <td>0.02175</td>
+                        <td>0.00230</td>
+                        <td>0.01075</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>0.01580</td>
+                        <td>0.02620</td>
+                        <td>0.00180</td>
+                        <td>0.01190</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>0.00935</td>
+                        <td>0.02815</td>
+                        <td>0.00115</td>
+                        <td>0.02000</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>0.00700</td>
+                        <td>0.02560</td>
+                        <td>0.00130</td>
+                        <td>0.06620</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="result-box">
+        <h3>✧ Consumo de memoria</h3>
+        <p class="section-text">
+            Para 18 variables, DPLL asignó una mediana
+            de 4.280 bytes en SAT de baja densidad,
+            7.768 bytes en SAT de alta densidad,
+            1.960 bytes en UNSAT inmediato y
+            12.376 bytes en UNSAT con núcleo completo.
+        </p>
+        <p class="section-text">
+            Estas cifras corresponden a bytes asignados
+            por hilo, no al pico de memoria RAM.
+        </p>
+    </div>
+
+    <div class="result-box">
+        <h3>✧ Conclusiones</h3>
+        <p class="section-text">
+            El escenario UNSAT inmediato presentó
+            tiempos bajos gracias a la detección
+            temprana de contradicciones.
+        </p>
+        <p class="section-text">
+            El núcleo completo requirió mayor
+            trabajo de búsqueda. Para 18 variables,
+            fue aproximadamente 50,9 veces más
+            lento que UNSAT inmediato.
+        </p>
+        <p class="section-text">
+            Los resultados ilustran el comportamiento
+            de estas instancias, pero no demuestran
+            por sí solos el peor caso exponencial
+            general del algoritmo.
+        </p>
+    </div>
+
+</section>
+
 
             <!-- ACTIVIDAD 5: AYUDA -->
             <section id="ayuda" class="tool-screen" hidden>
