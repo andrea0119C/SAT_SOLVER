@@ -969,3 +969,134 @@ textarea:focus-visible {
         transition: none;
     }
 }
+
+/* ==========================================
+   SAT SOLVER - TABLA DE COMBINACIONES
+   ========================================== */
+
+.panel-page .truth-table-section {
+    margin-top: 28px;
+    padding: 22px;
+
+    background: #fffafd;
+
+    border: 2px dashed #d6a5bc;
+    border-radius: 10px;
+}
+
+.panel-page .truth-table-section h3 {
+    margin: 0 0 16px;
+
+    color: #a06383;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* Resumen de resultados */
+
+.panel-page .truth-summary {
+    margin: 16px 0;
+    padding: 15px;
+
+    background: #ffe7f2;
+    border: 2px solid #dba5bf;
+
+    color: #764d65;
+
+    font-size: 9px;
+    line-height: 2.3;
+    white-space: pre-wrap;
+}
+
+/* Contenedor desplazable */
+
+.panel-page .truth-table-container {
+    width: 100%;
+    max-height: 440px;
+
+    overflow: auto;
+
+    border: 2px solid #d6a5bc;
+    border-radius: 6px;
+
+    background: #fffafd;
+}
+
+/* Tabla */
+
+.panel-page .truth-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    font-family: "Press Start 2P", monospace;
+    font-size: 9px;
+    line-height: 1.8;
+
+    text-align: center;
+}
+
+.panel-page .truth-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    padding: 14px;
+
+    background: #d992b2;
+    color: #ffffff;
+
+    border: 1px solid #bd7799;
+
+    white-space: nowrap;
+}
+
+.panel-page .truth-table td {
+    padding: 13px 10px;
+
+    border: 1px solid #efd0df;
+    color: #6c4a60;
+
+    white-space: nowrap;
+}
+
+/* Filas satisfactorias */
+
+.panel-page .truth-table tr.sat-row {
+    background: #e5f6e9;
+}
+
+/* Filas no satisfactorias */
+
+.panel-page .truth-table tr.unsat-row {
+    background: #ffebf1;
+}
+
+/* Efecto al pasar el mouse */
+
+.panel-page .truth-table tbody tr:hover {
+    filter: brightness(0.96);
+}
+
+/* Valores booleanos */
+
+.panel-page .truth-true {
+    color: #24784a !important;
+    font-weight: bold;
+}
+
+.panel-page .truth-false {
+    color: #bd5278 !important;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .panel-page .truth-table-section {
+        padding: 12px;
+    }
+
+    .panel-page .truth-table th,
+    .panel-page .truth-table td {
+        padding: 10px 7px;
+        font-size: 8px;
+    }
+}

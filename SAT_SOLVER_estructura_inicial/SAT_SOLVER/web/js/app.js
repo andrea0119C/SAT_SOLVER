@@ -171,6 +171,40 @@ async function resolverSAT(formula, resultadoElemento, boton) {
         resultadoElemento.textContent =
             formatearSolucion(datos);
 
+    // Generar tabla cuando se utiliza Resolver SAT.
+    // Los ejemplos mantienen su funcionamiento independiente.
+    if (resultadoElemento.id === "solve-result") {
+
+        const resumen =
+            document.getElementById("tabla-verdad-resumen");
+
+        const contenedor =
+            document.getElementById("tabla-verdad");
+
+        // Limpiar resultados anteriores
+        contenedor.replaceChildren();
+
+        resumen.textContent =
+            "Generando todas las combinaciones...";
+
+        try {
+
+            const tablaDatos = await enviarSolicitud(
+                "truth-table",
+                { formula: formula }
+            );
+
+            mostrarTablaCombinaciones(tablaDatos);
+
+        } catch (error) {
+
+            resumen.textContent =
+                "No se pudo generar la tabla: " +
+                error.message;
+        }
+    }
+
+
     } catch (error) {
 
         resultadoElemento.textContent =
@@ -299,6 +333,96 @@ async function ejecutarEjemplo(boton) {
 }
 
 /* ==========================================
+   TABLA DE COMBINACIONES SAT
+   ========================================== */
+
+function mostrarTablaCombinaciones(datos) {
+
+    const contenedor =
+        document.getElementById("tabla-verdad");
+
+    const resumen =
+        document.getElementById("tabla-verdad-resumen");
+
+    // Limpiar la tabla anterior
+    contenedor.replaceChildren();
+
+    // Mostrar estadísticas
+    resumen.textContent =
+        "Total: " + datos.rows.length +
+        "\nSatisfactorias: " + datos.satCount +
+        "\nNo satisfactorias: " + datos.unsatCount;
+
+    // Crear tabla
+    const tabla = document.createElement("table");
+    tabla.className = "truth-table";
+
+    const encabezado = document.createElement("thead");
+    const filaEncabezado = document.createElement("tr");
+
+    const titulos = [
+        ...datos.variables,
+        ...datos.clauses.map((_, i) => "C" + (i + 1)),
+        "Resultado"
+    ];
+
+    titulos.forEach(titulo => {
+        const th = document.createElement("th");
+        th.textContent = titulo;
+        filaEncabezado.appendChild(th);
+    });
+
+    encabezado.appendChild(filaEncabezado);
+    tabla.appendChild(encabezado);
+
+    const cuerpo = document.createElement("tbody");
+
+    // Agregar todas las combinaciones
+    datos.rows.forEach(fila => {
+
+        const tr = document.createElement("tr");
+
+        tr.className = fila.satisfies
+            ? "sat-row"
+            : "unsat-row";
+
+        const valores = [
+            ...fila.values,
+            ...fila.clausesSatisfied
+        ];
+
+        valores.forEach(valor => {
+            const td = document.createElement("td");
+
+            td.textContent = valor ? "V" : "F";
+
+            td.className = valor
+                ? "truth-true"
+                : "truth-false";
+
+            tr.appendChild(td);
+        });
+
+        const resultado = document.createElement("td");
+
+        resultado.textContent = fila.satisfies
+            ? "SÍ"
+            : "NO";
+
+        resultado.className = fila.satisfies
+            ? "truth-true"
+            : "truth-false";
+
+        tr.appendChild(resultado);
+        cuerpo.appendChild(tr);
+    });
+
+    tabla.appendChild(cuerpo);
+    contenedor.appendChild(tabla);
+}
+
+
+/* ==========================================
    8. INICIALIZACIÓN DEL PANEL
    ========================================== */
 
@@ -331,15 +455,28 @@ function iniciarPanel() {
         resolverSAT(formula, resultado, botonResolver);
     });
 
+
     // Botón Limpiar de Resolver.
     document.getElementById("clear-solve")
         .addEventListener("click", () => {
 
+            // 1. Limpiar la fórmula ingresada
             document.getElementById("formula").value = "";
 
+            // 2. Limpiar el resultado SAT/UNSAT
             document.getElementById("solve-result")
                 .textContent = "Ingresa una fórmula y pulsa Resolver.";
+
+            // 3. Limpiar la tabla de combinaciones
+            document.getElementById("tabla-verdad")
+                .replaceChildren();
+
+            // 4. Restablecer el resumen de la tabla
+            document.getElementById("tabla-verdad-resumen")
+                .textContent = "Ingresa una fórmula para generar la tabla.";
+
         });
+
 
     // Botón Verificar.
     document.getElementById("verify")
