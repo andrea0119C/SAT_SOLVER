@@ -29,6 +29,10 @@ public final class FormulaCNF {
     }
 
     public List<String> variables() { return variables; }
+    
+    public int numeroVariables() {
+    return variables.size();
+}
     /** Copias defensivas: el solver no puede alterar la fórmula original. */
     public List<int[]> clauses() {
         List<int[]> result = new ArrayList<>();
