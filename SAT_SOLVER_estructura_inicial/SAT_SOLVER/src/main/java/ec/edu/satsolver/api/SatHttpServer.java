@@ -15,6 +15,7 @@ public final class SatHttpServer {
         HttpServer server=HttpServer.create(new InetSocketAddress("127.0.0.1",port),0);
         server.createContext("/api/solve", ex -> handle(ex, false));
         server.createContext("/api/verify", ex -> handle(ex, true));
+        server.createContext("/api/truth-table", TruthTableEndpoint::handle);
         server.createContext("/", SatHttpServer::staticFile);
         server.start();
         System.out.println("SAT SOLVER disponible en http://localhost:"+port);
