@@ -1,0 +1,23 @@
+SAT_SOLVER | Persona 5 | benchmark tabla de verdad
+Java: 26.0.1+8-34
+SO: Windows 11 10.0
+CPU logicas: 16
+Semilla base: 20261114
+Tamanos: [4, 6, 8, 10, 12]
+Escenarios: [SAT_BAJA_DENSIDAD, SAT_ALTA_DENSIDAD, UNSAT_INMEDIATO, UNSAT_NUCLEO_COMPLETO]
+Instancias/configuracion: 3
+Calentamiento/instancia: 5
+Repeticiones medidas/instancia: 10
+Metodo memoria: BYTES_ASIGNADOS_HILO
+Memoria son bytes asignados por hilo, NO RAM pico ni memoria retenida.
+Cada fila registra resultados de una misma formula para los tres metodos.
+Medianas primero sobre repeticiones, luego sobre las instancias independientes.
+Se excluyen generacion CNF, verificacion de correctitud, CSV, HTTP, HTML y dibujos.
+Enumeracion produce TODAS las filas; DPLL encuentra una solucion o UNSAT; verificador evalua un solo candidato.
+En UNSAT verificar un candidato falso NO demuestra insatisfacibilidad.
+SAT: verificador utiliza testigo conocido. UNSAT: verifica asignacion todo-falso.
+Enumerador del equipo limita a 12 variables; no extrapolar rendimiento mas alla de ese limite.
+Cada tabla usa 2^n filas y conserva en memoria resultados de todas las clausulas.
+La estructura/densidad de clausulas afecta los tiempos. No se afirma crecimiento monotono en cada medida.
+No se sincroniza GC ni carga del sistema; JIT/GC pueden influir en microbenchmark.
+Los grafico PNG son resultados de esta ejecucion y deben mantenerse junto a sus CSV.
